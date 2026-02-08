@@ -14,7 +14,7 @@ A professional, modern UI library inspired by CSGO cheat menus. Fully standalone
 ## Installation
 
 ```lua
-local Library = loadstring(game:HttpGet("YOUR_URL_HERE"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/m0dzn1/CSGO-ui-library-test/refs/heads/main/csgo_ui_library.lua"))()
 ```
 
 ## Quick Start
