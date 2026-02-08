@@ -5,7 +5,7 @@
 ]]
 
 -- Load the library
-local Library = loadstring(game:HttpGet("YOUR_URL_HERE"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/m0dzn1/CSGO-ui-library-test/refs/heads/main/csgo_ui_library.lua"))()
 
 -- Create a window
 local Window = Library:CreateWindow({
