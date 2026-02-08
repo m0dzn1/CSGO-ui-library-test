@@ -1,340 +1,351 @@
 --[[
-    CSGO UI Library - Example Usage
+    Example recreating the exact CSGO cheat menu from the image
     
-    This example shows how to use all features of the library
+    Features shown:
+    - RAGEBOT, LEGITBOT, VISUALS, MISC, PLIST, CONFIGS tabs
+    - AIMBOT, ANTI-AIM, AUTO STUFF, RESOLVER, FAKE LAG, ADVANCED subtabs
+    - Two-column layout with checkboxes, sliders, and dropdowns
 ]]
 
 -- Load the library
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/m0dzn1/CSGO-ui-library-test/refs/heads/main/csgo_ui_library.lua"))()
 
--- Create a window
+-- Create window matching the screenshot
 local Window = Library:CreateWindow({
-    Title = "CSGO Cheat v1.0",
-    Size = UDim2.new(0, 650, 0, 450),
-    Theme = "Dark" -- "Dark" or "Light"
+    Title = "BLAXED.COM - RECODED VERSION!",
+    Size = UDim2.new(0, 720, 0, 520)
 })
 
 -- ============================================
--- AIMBOT TAB
+-- RAGEBOT TAB
 -- ============================================
-local AimbotTab = Window:AddTab("Aimbot")
+local RagebotTab = Window:AddTab("RAGEBOT")
 
-AimbotTab:AddLabel("Main Settings")
+-- AIMBOT SubTab
+local AimbotSubTab = RagebotTab:AddSubTab("AIMBOT")
 
-local aimbotEnabled = AimbotTab:AddToggle({
-    Name = "Enable Aimbot",
-    Default = false,
-    Callback = function(value)
-        print("Aimbot enabled:", value)
-        -- Your aimbot code here
-    end
-})
+-- Left Column
+AimbotSubTab:AddCheckbox("AUTO FIRE", true, function(v)
+    print("Auto Fire:", v)
+end)
 
-AimbotTab:AddDropdown({
-    Name = "Target Part",
-    Options = {"Head", "Torso", "Random"},
-    Default = "Head",
-    Callback = function(option)
-        print("Target part:", option)
-    end
-})
+AimbotSubTab:AddCheckbox("AUTO WALL", true, function(v)
+    print("Auto Wall:", v)
+end)
 
-AimbotTab:AddSlider({
-    Name = "FOV",
-    Min = 0,
-    Max = 360,
-    Default = 90,
-    Increment = 1,
-    Callback = function(value)
-        print("FOV:", value)
-    end
-})
+AimbotSubTab:AddSlider("MIN DAMAGE", 0, 100, 34, function(v)
+    print("Min Damage:", v)
+end)
 
-AimbotTab:AddSlider({
-    Name = "Smoothness",
-    Min = 0,
-    Max = 100,
-    Default = 50,
-    Increment = 1,
-    Callback = function(value)
-        print("Smoothness:", value)
-    end
-})
+AimbotSubTab:AddSlider("HITCHANCE", 0, 100, 15, function(v)
+    print("Hitchance:", v)
+end)
 
-AimbotTab:AddDivider()
+AimbotSubTab:AddLabel("BODY-AIM")
 
-AimbotTab:AddLabel("Advanced Settings")
+AimbotSubTab:AddCheckbox("FPS ADAPTIVE", true, function(v)
+    print("FPS Adaptive:", v)
+end)
 
-AimbotTab:AddToggle({
-    Name = "Visibility Check",
-    Default = true,
-    Callback = function(value)
-        print("Visibility check:", value)
-    end
-})
+AimbotSubTab:AddCheckbox("IGNORE HEAD", true, function(v)
+    print("Ignore Head:", v)
+end)
 
-AimbotTab:AddToggle({
-    Name = "Team Check",
-    Default = true,
-    Callback = function(value)
-        print("Team check:", value)
-    end
-})
+AimbotSubTab:AddCheckbox("IGNORE ARMS & LEGS", true, function(v)
+    print("Ignore Arms & Legs:", v)
+end)
 
-AimbotTab:AddToggle({
-    Name = "Prediction",
-    Default = false,
-    Callback = function(value)
-        print("Prediction:", value)
-    end
-})
+AimbotSubTab:AddCheckbox("HS ONLY", true, function(v)
+    print("HS Only:", v)
+end)
+
+AimbotSubTab:AddCheckbox("HS ONLY IF RESOLVED", true, function(v)
+    print("HS Only if Resolved:", v)
+end)
+
+AimbotSubTab:AddCheckbox("HS ONLY AT MOVING TARGETS", true, function(v)
+    print("HS Only at Moving Targets:", v)
+end)
+
+AimbotSubTab:AddCheckbox("SMART AIM", true, function(v)
+    print("Smart Aim:", v)
+end)
+
+AimbotSubTab:AddCheckbox("PREFER BAIM", true, function(v)
+    print("Prefer BAIM:", v)
+end)
+
+AimbotSubTab:AddCheckbox("BAIM ON LOW HITCHANCE", true, function(v)
+    print("BAIM on Low Hitchance:", v)
+end)
+
+AimbotSubTab:AddCheckbox("AUTO BAIM", true, function(v)
+    print("Auto BAIM:", v)
+end)
+
+AimbotSubTab:AddDropdown("MULTIBOX", {"NONE", "MULTIBOX", "ADAPTIVE"}, function(v)
+    print("Multibox:", v)
+end)
+
+-- Switch to right column
+AimbotSubTab:SwitchColumn()
+
+-- Right Column
+AimbotSubTab:AddCheckbox("ACCURACY BOOST", true, function(v)
+    print("Accuracy Boost:", v)
+end, "right")
+
+AimbotSubTab:AddCheckbox("DELAY SHOOT", true, function(v)
+    print("Delay Shoot:", v)
+end, "right")
+
+AimbotSubTab:AddLabel("PSILENT", "right")
+
+AimbotSubTab:AddCheckbox("ANTI PSILENT", true, function(v)
+    print("Anti Psilent:", v)
+end, "right")
+
+AimbotSubTab:AddCheckbox("AUTO REVOLVER", true, function(v)
+    print("Auto Revolver:", v)
+end, "right")
+
+AimbotSubTab:AddCheckbox("NO RECOIL", true, function(v)
+    print("No Recoil:", v)
+end, "right")
+
+AimbotSubTab:AddCheckbox("AUTO SCOPE", true, function(v)
+    print("Auto Scope:", v)
+end, "right")
+
+AimbotSubTab:AddCheckbox("AUTO STOP", true, function(v)
+    print("Auto Stop:", v)
+end, "right")
+
+AimbotSubTab:AddCheckbox("AUTO CROUCH", true, function(v)
+    print("Auto Crouch:", v)
+end, "right")
+
+-- ANTI-AIM SubTab
+local AntiAimSubTab = RagebotTab:AddSubTab("ANTI-AIM")
+
+AntiAimSubTab:AddCheckbox("ENABLE ANTI-AIM", false, function(v)
+    print("Enable Anti-Aim:", v)
+end)
+
+AntiAimSubTab:AddDropdown("YAW MODE", {"NONE", "STATIC", "DYNAMIC"}, function(v)
+    print("Yaw Mode:", v)
+end)
+
+AntiAimSubTab:AddSlider("YAW OFFSET", -180, 180, 0, function(v)
+    print("Yaw Offset:", v)
+end)
+
+-- Switch to right column
+AntiAimSubTab:SwitchColumn()
+
+AntiAimSubTab:AddCheckbox("FAKE DUCK", false, function(v)
+    print("Fake Duck:", v)
+end, "right")
+
+AntiAimSubTab:AddCheckbox("SLOW WALK", false, function(v)
+    print("Slow Walk:", v)
+end, "right")
+
+-- AUTO STUFF SubTab
+local AutoStuffSubTab = RagebotTab:AddSubTab("AUTO STUFF")
+
+AutoStuffSubTab:AddCheckbox("AUTO ACCEPT", false, function(v)
+    print("Auto Accept:", v)
+end)
+
+AutoStuffSubTab:AddCheckbox("AUTO BUY", false, function(v)
+    print("Auto Buy:", v)
+end)
+
+AutoStuffSubTab:AddCheckbox("CLAN TAG SPAMMER", false, function(v)
+    print("Clan Tag Spammer:", v)
+end)
+
+-- RESOLVER SubTab
+local ResolverSubTab = RagebotTab:AddSubTab("RESOLVER")
+
+ResolverSubTab:AddCheckbox("ENABLE RESOLVER", true, function(v)
+    print("Enable Resolver:", v)
+end)
+
+ResolverSubTab:AddDropdown("RESOLVER MODE", {"NONE", "BASIC", "ADVANCED"}, function(v)
+    print("Resolver Mode:", v)
+end)
+
+-- FAKE LAG SubTab
+local FakeLagSubTab = RagebotTab:AddSubTab("FAKE LAG")
+
+FakeLagSubTab:AddCheckbox("ENABLE FAKE LAG", false, function(v)
+    print("Enable Fake Lag:", v)
+end)
+
+FakeLagSubTab:AddSlider("FAKE LAG AMOUNT", 0, 15, 5, function(v)
+    print("Fake Lag Amount:", v)
+end)
+
+-- ADVANCED SubTab
+local AdvancedSubTab = RagebotTab:AddSubTab("ADVANCED")
+
+AdvancedSubTab:AddCheckbox("BACKTRACK", true, function(v)
+    print("Backtrack:", v)
+end)
+
+AdvancedSubTab:AddSlider("BACKTRACK TICKS", 0, 15, 10, function(v)
+    print("Backtrack Ticks:", v)
+end)
+
+-- ============================================
+-- LEGITBOT TAB
+-- ============================================
+local LegitbotTab = Window:AddTab("LEGITBOT")
+
+local LegitAimSubTab = LegitbotTab:AddSubTab("AIM ASSIST")
+
+LegitAimSubTab:AddCheckbox("ENABLE AIM ASSIST", false, function(v)
+    print("Enable Aim Assist:", v)
+end)
+
+LegitAimSubTab:AddSlider("SMOOTHNESS", 0, 100, 50, function(v)
+    print("Smoothness:", v)
+end)
+
+LegitAimSubTab:AddSlider("FOV", 0, 180, 45, function(v)
+    print("FOV:", v)
+end)
 
 -- ============================================
 -- VISUALS TAB
 -- ============================================
-local VisualsTab = Window:AddTab("Visuals")
+local VisualsTab = Window:AddTab("VISUALS")
 
-VisualsTab:AddLabel("ESP Settings")
+local ESPSubTab = VisualsTab:AddSubTab("ESP")
 
-VisualsTab:AddToggle({
-    Name = "Enable ESP",
-    Default = false,
-    Callback = function(value)
-        print("ESP enabled:", value)
-    end
-})
+ESPSubTab:AddCheckbox("ENABLE ESP", false, function(v)
+    print("Enable ESP:", v)
+end)
 
-VisualsTab:AddToggle({
-    Name = "Box ESP",
-    Default = false,
-    Callback = function(value)
-        print("Box ESP:", value)
-    end
-})
+ESPSubTab:AddCheckbox("BOX ESP", false, function(v)
+    print("Box ESP:", v)
+end)
 
-VisualsTab:AddToggle({
-    Name = "Name ESP",
-    Default = false,
-    Callback = function(value)
-        print("Name ESP:", value)
-    end
-})
+ESPSubTab:AddCheckbox("NAME ESP", false, function(v)
+    print("Name ESP:", v)
+end)
 
-VisualsTab:AddToggle({
-    Name = "Health ESP",
-    Default = false,
-    Callback = function(value)
-        print("Health ESP:", value)
-    end
-})
+ESPSubTab:AddCheckbox("HEALTH ESP", false, function(v)
+    print("Health ESP:", v)
+end)
 
-VisualsTab:AddToggle({
-    Name = "Distance ESP",
-    Default = false,
-    Callback = function(value)
-        print("Distance ESP:", value)
-    end
-})
+ESPSubTab:AddCheckbox("DISTANCE ESP", false, function(v)
+    print("Distance ESP:", v)
+end)
 
-VisualsTab:AddColorPicker({
-    Name = "Box Color",
-    Default = Color3.fromRGB(255, 0, 0),
-    Callback = function(color)
-        print("Box color:", color)
-    end
-})
+ESPSubTab:SwitchColumn()
 
-VisualsTab:AddDivider()
+ESPSubTab:AddCheckbox("SKELETON ESP", false, function(v)
+    print("Skeleton ESP:", v)
+end, "right")
 
-VisualsTab:AddLabel("Chams Settings")
+ESPSubTab:AddCheckbox("GLOW ESP", false, function(v)
+    print("Glow ESP:", v)
+end, "right")
 
-VisualsTab:AddToggle({
-    Name = "Enable Chams",
-    Default = false,
-    Callback = function(value)
-        print("Chams enabled:", value)
-    end
-})
+ESPSubTab:AddCheckbox("TRACERS", false, function(v)
+    print("Tracers:", v)
+end, "right")
 
-VisualsTab:AddSlider({
-    Name = "Transparency",
-    Min = 0,
-    Max = 100,
-    Default = 50,
-    Callback = function(value)
-        print("Chams transparency:", value)
-    end
-})
+local ChamsSubTab = VisualsTab:AddSubTab("CHAMS")
+
+ChamsSubTab:AddCheckbox("ENABLE CHAMS", false, function(v)
+    print("Enable Chams:", v)
+end)
+
+ChamsSubTab:AddSlider("TRANSPARENCY", 0, 100, 50, function(v)
+    print("Chams Transparency:", v)
+end)
 
 -- ============================================
 -- MISC TAB
 -- ============================================
-local MiscTab = Window:AddTab("Misc")
+local MiscTab = Window:AddTab("MISC")
 
-MiscTab:AddLabel("Movement")
+local MovementSubTab = MiscTab:AddSubTab("MOVEMENT")
 
-MiscTab:AddToggle({
-    Name = "Speed Boost",
-    Default = false,
-    Callback = function(value)
-        print("Speed boost:", value)
-        if value then
-            -- Enable speed boost
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
-        else
-            -- Disable speed boost
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-        end
+MovementSubTab:AddCheckbox("BUNNY HOP", false, function(v)
+    print("Bunny Hop:", v)
+end)
+
+MovementSubTab:AddCheckbox("AUTO STRAFE", false, function(v)
+    print("Auto Strafe:", v)
+end)
+
+MovementSubTab:AddSlider("SPEED", 16, 100, 16, function(v)
+    print("Speed:", v)
+    if game.Players.LocalPlayer.Character then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
     end
-})
+end)
 
-MiscTab:AddSlider({
-    Name = "Walk Speed",
-    Min = 16,
-    Max = 200,
-    Default = 16,
-    Increment = 1,
-    Callback = function(value)
-        print("Walk speed:", value)
-        if game.Players.LocalPlayer.Character then
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
-        end
-    end
-})
+MovementSubTab:SwitchColumn()
 
-MiscTab:AddSlider({
-    Name = "Jump Power",
-    Min = 50,
-    Max = 200,
-    Default = 50,
-    Increment = 1,
-    Callback = function(value)
-        print("Jump power:", value)
-        if game.Players.LocalPlayer.Character then
-            game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
-        end
-    end
-})
+MovementSubTab:AddCheckbox("INFINITE JUMP", false, function(v)
+    print("Infinite Jump:", v)
+end, "right")
 
-MiscTab:AddDivider()
+MovementSubTab:AddCheckbox("NO FALL DAMAGE", false, function(v)
+    print("No Fall Damage:", v)
+end, "right")
 
-MiscTab:AddLabel("Teleportation")
+local OtherSubTab = MiscTab:AddSubTab("OTHER")
 
-local teleportInput = MiscTab:AddInput({
-    Name = "Player Name",
-    Placeholder = "Enter player name...",
-    Callback = function(text)
-        print("Player name:", text)
-    end
-})
+OtherSubTab:AddCheckbox("REMOVE RECOIL", false, function(v)
+    print("Remove Recoil:", v)
+end)
 
-MiscTab:AddButton({
-    Name = "Teleport to Player",
-    Callback = function()
-        print("Teleporting...")
-        Window:Notify({
-            Title = "Teleport",
-            Content = "Attempting to teleport...",
-            Duration = 2
-        })
-    end
-})
+OtherSubTab:AddCheckbox("REMOVE SPREAD", false, function(v)
+    print("Remove Spread:", v)
+end)
 
-MiscTab:AddDivider()
-
-MiscTab:AddLabel("Other")
-
-MiscTab:AddToggle({
-    Name = "Anti-AFK",
-    Default = false,
-    Callback = function(value)
-        print("Anti-AFK:", value)
-    end
-})
-
-MiscTab:AddToggle({
-    Name = "Infinite Jump",
-    Default = false,
-    Callback = function(value)
-        print("Infinite jump:", value)
-    end
-})
+OtherSubTab:AddCheckbox("THIRDPERSON", false, function(v)
+    print("Thirdperson:", v)
+end)
 
 -- ============================================
--- SETTINGS TAB
+-- PLIST TAB
 -- ============================================
-local SettingsTab = Window:AddTab("Settings")
+local PListTab = Window:AddTab("PLIST")
 
-SettingsTab:AddLabel("UI Configuration")
+local WhitelistSubTab = PListTab:AddSubTab("WHITELIST")
 
-SettingsTab:AddDropdown({
-    Name = "Theme",
-    Options = {"Dark", "Light"},
-    Default = "Dark",
-    Callback = function(option)
-        print("Theme changed to:", option)
-        Window:Notify({
-            Title = "Theme Changed",
-            Content = "Please reload the UI to apply the new theme",
-            Duration = 3
-        })
-    end
-})
+WhitelistSubTab:AddLabel("Manage your whitelist here")
+WhitelistSubTab:AddSpace(10)
+WhitelistSubTab:AddCheckbox("ENABLE WHITELIST", false, function(v)
+    print("Enable Whitelist:", v)
+end)
 
-SettingsTab:AddButton({
-    Name = "Reset UI Position",
-    Callback = function()
-        print("Resetting UI position...")
-        Window:Notify({
-            Title = "UI Reset",
-            Content = "UI position has been reset",
-            Duration = 2
-        })
-    end
-})
+-- ============================================
+-- CONFIGS TAB
+-- ============================================
+local ConfigsTab = Window:AddTab("CONFIGS")
 
-SettingsTab:AddDivider()
+local ConfigSubTab = ConfigsTab:AddSubTab("CONFIG")
 
-SettingsTab:AddLabel("Config")
+ConfigSubTab:AddLabel("Configuration Management")
+ConfigSubTab:AddSpace(10)
 
-local configName = SettingsTab:AddInput({
-    Name = "Config Name",
-    Placeholder = "default",
-    Default = "default",
-    Callback = function(text)
-        print("Config name:", text)
-    end
-})
+ConfigSubTab:AddDropdown("SELECT CONFIG", {"DEFAULT", "RAGE", "LEGIT", "HVH"}, function(v)
+    print("Selected Config:", v)
+end)
 
-SettingsTab:AddButton({
-    Name = "Save Config",
-    Callback = function()
-        print("Saving config...")
-        Window:Notify({
-            Title = "Config Saved",
-            Content = "Configuration saved successfully!",
-            Duration = 2
-        })
-    end
-})
+ConfigSubTab:AddSpace(5)
+ConfigSubTab:AddCheckbox("AUTO SAVE", true, function(v)
+    print("Auto Save:", v)
+end)
 
-SettingsTab:AddButton({
-    Name = "Load Config",
-    Callback = function()
-        print("Loading config...")
-        Window:Notify({
-            Title = "Config Loaded",
-            Content = "Configuration loaded successfully!",
-            Duration = 2
-        })
-    end
-})
-
--- Welcome notification
-Window:Notify({
-    Title = "Welcome!",
-    Content = "CSGO UI Library loaded successfully",
-    Duration = 3
-})
-
-print("CSGO UI Library Example Loaded!")
+print("CSGO Cheat Menu loaded successfully!")
+print("Exact recreation of BLAXED.COM menu")
